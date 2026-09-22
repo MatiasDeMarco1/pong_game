@@ -1,4 +1,5 @@
 use macroquad::prelude::*;
+use crate::ball::Ball;
 
 pub struct Paddle {
     pub x: f32,
@@ -8,6 +9,16 @@ pub struct Paddle {
 }
 
 impl Paddle {
+    pub fn update_ia(&mut self, ball: &Ball, speed: f32){
+        let target = ball.y - self.height / 2.0;
+        let diff = target - self.y;
+
+        if diff.abs() > 5.0{
+            let direction = diff.signum();
+            self.y += direction * speed * get_frame_time();
+        }
+        self.y = self.y.clamp(0.0, screen_height() - self.height);
+    }
     pub fn update(&mut self, up_key: KeyCode, down_key: KeyCode, speed: f32) {
         if is_key_down(up_key) {
             self.y -= speed * get_frame_time();

@@ -30,7 +30,8 @@ impl Ball {
             && self.y >= left_paddle.y
             && self.y <= left_paddle.y + left_paddle.height
         {
-            self.vx = self.vx.abs();
+            self.vx = self.vx.abs() * 1.05;
+            self.vy *= 1.05;
         }
 
         if self.x + self.radius >= right_paddle.x
@@ -38,7 +39,8 @@ impl Ball {
             && self.y >= right_paddle.y
             && self.y <= right_paddle.y + right_paddle.height
         {
-            self.vx = -self.vx.abs();
+            self.vx = -self.vx.abs() * 1.05;
+            self.vy *= 1.05;
         }
 
         if self.x - self.radius <= 0.0 {

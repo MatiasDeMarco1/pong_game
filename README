@@ -1,0 +1,40 @@
+#  Pong Game
+
+Un clásico Pong implementado en Rust usando [macroquad](https://github.com/not-fl3/macroquad) como framework gráfico.
+
+## Características
+
+- Movimiento de paddles con detección de bordes (no se salen de pantalla)
+- Física de la pelota: rebote contra paredes y paddles
+- Sistema de puntaje visible en pantalla
+- Reset automático de la pelota al anotar un punto
+- Código modular (`Paddle` y `Ball` como structs independientes con su propia lógica)
+
+## Controles
+
+| Jugador | Subir | Bajar |
+|---------|-------|-------|
+| Izquierda | `W` | `S` |
+| Derecha | `↑` | `↓` |
+
+## Cómo correrlo
+
+Necesitás tener [Rust](https://www.rust-lang.org/tools/install) instalado.
+
+```bash
+git clone https://github.com/MatiasDeMarco1/pong_game.git
+cd pong_game
+cargo run
+```
+
+## Estructura del proyecto
+
+src/
+├── main.rs // Loop principal del juego
+├── paddle.rs // Struct Paddle y su lógica de movimiento
+└── ball.rs // Struct Ball: movimiento, colisiones y reset
+
+
+## Aprendizajes
+
+Este proyecto fue una introducción práctica a Rust aplicado a videojuegos: ownership/borrowing en structs mutables, organización en módulos, y el ciclo básico de un game loop (update → collision → draw).
